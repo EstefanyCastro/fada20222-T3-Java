@@ -32,7 +32,7 @@ class ArbolRojiNegroTest {
         }
 
         if (arb.getDer() != null) {
-            alturaIzq = 1 + altura(arb.getDer());
+            alturaDer = 1 + altura(arb.getDer());
         }
 
         return (alturaIzq > alturaDer) ? alturaIzq : alturaDer;
@@ -72,6 +72,23 @@ class ArbolRojiNegroTest {
         assertEquals(instanciaB.inorden(), "-32 -22 -14 -9 -7 -1 0 1 2 3 7 9 13 14 17 19 20 22 33 50 66");
         assertTrue(altura(instancia) <= 2 * Math.log(20) / Math.log(2) + 1);
 
+        /* No funcionó
+
+        ArbolRojinegro instanciaC = new ArbolRojinegro(null, null, -1, true);
+
+        for (int i = 0; i < 500; i++) {
+            instanciaC.insertar(i);
+        }
+
+        assertTrue(altura(instanciaC) <= 2 * Math.log(500) / Math.log(2) + 1);
+
+        ArbolRojinegro instanciaD = new ArbolRojinegro(null, null, -1, true);
+
+        for (int i = 499; i >= 0; i--) {
+            instanciaD.insertar(i);
+        }
+
+        assertTrue(altura(instanciaD) <= 2 * Math.log(500) / Math.log(2) + 1);*/
     }
 
     @Test
@@ -110,13 +127,13 @@ class ArbolRojiNegroTest {
     void rotacionIzquierdaTest() throws Exception {
 
         // Execute
-        arb1.rotacionIzquierda(4);
+        arb1.rotacionIzquierda(2);
 
         // Assert
         assertEquals(arb1.bfs(), "4 2 5 1 3");
 
         // Execute
-        arb2.rotacionIzquierda(8);
+        arb2.rotacionIzquierda(5);
 
         // Assert
         assertEquals(arb2.bfs(), "8 5 9 1 6");
@@ -127,13 +144,13 @@ class ArbolRojiNegroTest {
     void rotacionDerechaTest() throws Exception {
 
         // Execute
-        arb3.rotacionDerecha(2);
+        arb3.rotacionDerecha(4);
 
         // Assert
         assertEquals(arb3.bfs(), "2 1 4 3 5");
 
         // Execute
-        arb4.rotacionDerecha(5);
+        arb4.rotacionDerecha(8);
 
         // Assert
         assertEquals(arb4.bfs(), "5 1 8 6 9");
